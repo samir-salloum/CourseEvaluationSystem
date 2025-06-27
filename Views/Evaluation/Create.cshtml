@@ -1,0 +1,63 @@
+﻿@model CourseEvaluationSystem.Models.ViewModels.EvaluationFormViewModel
+
+@{
+    ViewData["Title"] = "Skapa utvärdering";
+}
+
+<h2>Skapa utvärdering för <strong>@Model.CourseTitle</strong></h2>
+
+<form asp-action="Create" method="post" class="mt-4">
+
+    <input type="hidden" asp-for="CourseId" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label">Betyg</label>
+        <div id="star-rating" class="mb-2"></div>
+        <input type="hidden" id="Rating" name="Rating" value="0" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Comment" class="form-label"></label>
+        <textarea asp-for="Comment" class="form-control"></textarea>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Skicka utvärdering</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ratingInput = document.getElementById("Rating");
+            const starContainer = document.getElementById("star-rating");
+
+            function renderStars(rating) {
+                starContainer.innerHTML = "";
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement("span");
+                    star.textContent = i <= rating ? "★" : "☆";
+                    star.style.fontSize = "1.8rem";
+                    star.style.cursor = "pointer";
+                    star.style.color = "#ffc107";
+
+                    star.addEventListener("click", () => {
+                        ratingInput.value = i;
+                        renderStars(i);
+                    });
+
+                    starContainer.appendChild(star);
+                }
+            }
+
+            renderStars(parseInt(ratingInput.value));
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

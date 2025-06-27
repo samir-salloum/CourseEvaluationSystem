@@ -1,0 +1,159 @@
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --accent-color: #198754;
+    --bg-light: #f8f9fa;
+    --bg-dark: #0c1e3b;
+    --text-dark: #212529;
+    --text-light: #f8f9fa;
+}
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* Fokus-effekter */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-dark) !important;
+}
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: var(--text-light) !important;
+    }
+
+        .navbar .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+/* Kort-styling */
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.card {
+    border-radius: 0.5rem;
+}
+
+/* Knappar */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+    }
+
+/* DARK MODE */
+body.dark-mode {
+    background-color: #121212;
+    color: var(--text-light);
+}
+
+    body.dark-mode .navbar {
+        background-color: #1f1f1f !important;
+    }
+
+        body.dark-mode .navbar .nav-link,
+        body.dark-mode .navbar .navbar-brand {
+            color: var(--text-light) !important;
+        }
+
+            body.dark-mode .navbar .nav-link:hover {
+                color: var(--accent-color) !important;
+            }
+
+    body.dark-mode .card {
+        background-color: #1e1e1e;
+        color: var(--text-light);
+        border-color: #2c2c2c;
+    }
+
+    body.dark-mode .card-header {
+        background-color: #333;
+        color: var(--text-light);
+    }
+
+    body.dark-mode .table {
+        color: var(--text-light);
+    }
+
+        body.dark-mode .table thead {
+            background-color: #2a2a2a;
+        }
+
+    body.dark-mode .btn-primary {
+        background-color: #375a7f;
+        border-color: #375a7f;
+    }
+
+    body.dark-mode .btn-outline-primary {
+        color: #aad;
+        border-color: #aad;
+    }
+
+    body.dark-mode footer {
+        background-color: #1c1c1c;
+        color: #aaa;
+    }
+
+    body.dark-mode a {
+        color: #87cefa;
+    }
+
+    /* Inputs och formulär i dark mode */
+    body.dark-mode input,
+    body.dark-mode textarea,
+    body.dark-mode select {
+        background-color: #2b2b2b;
+        color: #f8f9fa;
+        border-color: #444;
+    }
+
+        body.dark-mode input::placeholder,
+        body.dark-mode textarea::placeholder {
+            color: #aaa;
+        }
+
+/* Transition-effekter */
+body,
+.card,
+.navbar,
+footer,
+.table,
+.btn,
+a,
+input,
+textarea,
+select {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.card-header h4 {
+    color: black;
+}
