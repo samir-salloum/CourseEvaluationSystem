@@ -1,0 +1,64 @@
+﻿@model CourseEvaluationSystem.Models.ViewModels.CourseDetailsViewModel
+@{
+    ViewData["Title"] = "Kursdetaljer";
+    Func<int, string> renderStars = rating =>
+    {
+        var filled = new string('★', rating);
+        var empty = new string('☆', 5 - rating);
+        return filled + empty;
+    };
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title">@Model.Title</h2>
+            <p class="text-muted mb-3">
+                <strong>Genomsnittligt betyg:</strong>
+                <span class="badge bg-info text-dark">
+                    @Model.AverageRating.ToString("0.0") / 5.0
+                    (@renderStars((int)Math.Round(Model.AverageRating)))
+                </span>
+            </p>
+
+            <h4 class="mt-4">Utvärderingar</h4>
+            @if (Model.Evaluations != null && Model.Evaluations.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Betyg</th>
+                                <th>Kommentar</th>
+                                <th>Datum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var eval in Model.Evaluations)
+                            {
+                                <tr>
+                                    <td>@renderStars(eval.Rating) <span class="text-muted small">(@eval.Rating)</span></td>
+                                    <td>@eval.Comment</td>
+                                    <td>@eval.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="text-muted">Inga utvärderingar ännu.</p>
+            }
+
+            <a class="btn btn-outline-primary mt-3"
+               asp-controller="Course" asp-action="Index">Tillbaka till kurser</a>
+
+            <a class="btn btn-success mt-2"
+               asp-controller="Evaluation" asp-action="Create"
+               asp-route-courseId="@Model.CourseId">
+                Lämna utvärdering
+            </a>
+        </div>
+    </div>
+</div>

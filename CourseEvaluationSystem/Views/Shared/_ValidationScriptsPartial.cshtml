@@ -1,0 +1,19 @@
+﻿<environment include="Development">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+</environment>
+
+<environment exclude="Development">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+            integrity="sha512-bZLZ3YvXz1nFMu5Lx5xB1oC0mYc8+qkqY1fF4Jm3fJg6N1h0s3q1J3K7a7+0xXoY7QjF6xWfS8eR9D6rK5W1Vg=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"
+            integrity="sha512-T1oG7W1Y3y3v3p3X+8m6nU0f1j2kz2dTQv8V2r7N+4rM7k7sJrQ5k1c0r1uG2lZp4kJx1kM1m8xv7rQkW+1zqA=="
+            crossorigin="anonymous"></script>
+
+    <!-- Fallback till lokala filer om CDN inte laddas -->
+    <script asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator"></script>
+    <script asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"></script>
+</environment>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CourseEvaluationSystem.Models.Course>
+@{
+    ViewData["Title"] = "Kurser";
+}
+
+<h2>Kurser</h2>
+
+@if (Model != null && Model.Any())
+{
+    <div class="list-group">
+        @foreach (var c in Model)
+        {
+            <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+               asp-controller="Course" asp-action="Details" asp-route-id="@c.Id">
+                <span>@c.Title</span>
+                <span class="bi bi-chevron-right"></span>
+            </a>
+        }
+    </div>
+}
+else
+{
+    <p class="text-muted">Inga kurser ännu.</p>
+}

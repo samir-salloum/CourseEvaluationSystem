@@ -1,0 +1,88 @@
+﻿@model CourseEvaluationSystem.Models.ViewModels.EvaluationFormViewModel
+
+@{
+    ViewData["Title"] = "Skapa utvärdering";
+}
+
+<h2>Skapa utvärdering för <strong>@Model.CourseTitle</strong></h2>
+
+<form asp-action="Create" method="post" class="mt-4" id="eval-form">
+    @Html.AntiForgeryToken() <!-- Viktigt! -->
+    <!-- KursId måste postas -->
+    <input type="hidden" asp-for="CourseId" />
+
+    <!-- Visar valideringsfel överst i formuläret -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @* DUBBELT i originalet – lämnas kvar men är bortkommenterad
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    *@
+
+    <div class="mb-3">
+        <label class="form-label">Betyg</label>
+        <div id="star-rating" class="mb-2" aria-label="Välj betyg 1 till 5 stjärnor"></div>
+
+        <!-- Viktigt: bind till modellen -->
+        <input type="hidden" asp-for="Rating" id="Rating" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+        <small class="text-muted d-block">Klicka en stjärna för att sätta betyg.</small>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Comment" class="form-label"></label>
+        <textarea asp-for="Comment" class="form-control" maxlength="1000"></textarea>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Skicka utvärdering</button>
+    <a class="btn btn-outline-secondary ms-2"
+       asp-controller="Course" asp-action="Details" asp-route-id="@Model.CourseId">Tillbaka</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ratingInput = document.getElementById("Rating");
+            const starContainer = document.getElementById("star-rating");
+            const form = document.getElementById("eval-form");
+
+            function renderStars(rating) {
+                starContainer.innerHTML = "";
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement("button");
+                    star.type = "button";
+                    star.className = "btn btn-link p-0 m-0";
+                    star.textContent = i <= rating ? "★" : "☆";
+                    star.style.fontSize = "1.8rem";
+                    star.style.color = "#ffc107";
+                    star.setAttribute("aria-label", i + " stjärnor");
+
+                    star.addEventListener("click", () => {
+                        ratingInput.value = i;   // skriver in värdet i dolda fältet
+                        renderStars(i);          // rita om stjärnorna
+                    });
+
+                    starContainer.appendChild(star);
+                }
+            }
+
+            // Initiera stjärnorna med modellens värde (eller 0)
+            const initial = parseInt(ratingInput.value || "0", 10);
+            renderStars(isNaN(initial) ? 0 : initial);
+
+            // ---- IMPORTANT ----
+            // Tidigare fanns en submit-vakt här som stoppade formuläret och visade en alert.
+            // Den orsakade att giltiga formulär inte skickades. Vi kommenterar bort den.
+            /*
+            form.addEventListener("submit", function (e) {
+                const val = parseInt(ratingInput.value || "0", 10);
+                if (isNaN(val) || val < 1 || val > 5) {
+                    e.preventDefault();
+                    alert("Välj ett betyg mellan 1 och 5 innan du skickar.");
+                }
+            });
+            */
+        });
+    </script>
+}

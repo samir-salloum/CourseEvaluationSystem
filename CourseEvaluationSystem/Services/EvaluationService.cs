@@ -26,7 +26,7 @@ namespace CourseEvaluationSystem.Services
             // Normalisera kommentaren
             vm.Comment = vm.Comment?.Trim();
 
-            // NY REGEL (TDD): Maxlängd 1000 tecken
+            // Maxlängd 1000 tecken (TDD-regel)
             if (!string.IsNullOrWhiteSpace(vm.Comment) && vm.Comment.Length > 1000)
             {
                 return (false, "Comment exceeds 1000 characters.");
@@ -44,7 +44,7 @@ namespace CourseEvaluationSystem.Services
             var alreadyExists = await _db.Evaluations
                 .AnyAsync(e => e.CourseId == vm.CourseId && e.StudentId == studentId);
             if (alreadyExists)
-                return (false, "You have already submitted an evaluation for this course.");
+                return (false, "Duplicate evaluation: you have already submitted an evaluation for this course."); // <-- changed
 
             // Skapa och spara
             var eval = new Evaluation
@@ -68,4 +68,3 @@ namespace CourseEvaluationSystem.Services
         }
     }
 }
-// ttt

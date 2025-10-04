@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Thank you for your evaluation";
+    var courseTitle = ViewBag.CourseTitle as string ?? "the course";
+}
+
+<div class="text-center mt-5">
+    <h2 class="text-success">Thank you for your feedback!</h2>
+    <p class="lead">Your evaluation for <strong>@courseTitle</strong> has been submitted.</p>
+
+    <a class="btn btn-primary mt-3" asp-controller="Course" asp-action="Index">Back to courses</a>
+</div>
