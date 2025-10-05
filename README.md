@@ -163,7 +163,14 @@ Below are two TDD cycles: first a **failing** test (**RED**), then the **minimal
 `test(service): failing test for duplicate evaluation rule` →  
 `feat(service): prevent duplicate evaluation per student/course`
 
-> **How to fill the links:** On GitHub open **Commits**, click each commit above, copy the URL, and paste it here.
+> Cycle 1 — Comment max length:
+RED:   https://github.com/samir-salloum/CourseEvaluationSystem/commit/893f60107c948ba5c0c07a7b96691e16ddbc9852
+GREEN: https://github.com/samir-salloum/CourseEvaluationSystem/commit/f1c09c890d84b161fe115e036ecb6f11ad9d3c3f
+
+Cycle 2 — Duplicate per student/course:
+RED:   https://github.com/samir-salloum/CourseEvaluationSystem/commit/20934925245e29fcdc4076909caeed522ad37380
+GREEN: https://github.com/samir-salloum/CourseEvaluationSystem/commit/f6924d175b82ba21ea8c9240e289e2cf4ea493d9
+
 
 ---
 
