@@ -145,9 +145,9 @@ Below are two TDD cycles: first a **failing** test (**RED**), then the **minimal
 
 ### Cycle 1 — Comment max length (1000 chars)
 - **RED commit:** failing test  
-  Link: <PASTE-LINK-TO-RED-COMMIT-(1000-LIMIT)>
+  Link: RED:   https://github.com/samir-salloum/CourseEvaluationSystem/commit/893f60107c948ba5c0c07a7b96691e16ddbc9852
 - **GREEN commit:** implementation that makes the test pass  
-  Link: <PASTE-LINK-TO-GREEN-COMMIT-(1000-LIMIT)>
+  Link: GREEN: https://github.com/samir-salloum/CourseEvaluationSystem/commit/f1c09c890d84b161fe115e036ecb6f11ad9d3c3f
 
 *Suggested commit messages:*  
 `test(service): failing test for 1000-char comment limit` →  
@@ -155,21 +155,14 @@ Below are two TDD cycles: first a **failing** test (**RED**), then the **minimal
 
 ### Cycle 2 — One evaluation per student & course (duplicate rule)
 - **RED commit:** failing test  
-  Link: <PASTE-LINK-TO-RED-COMMIT-(duplicate)>
+  Link: RED:   https://github.com/samir-salloum/CourseEvaluationSystem/commit/20934925245e29fcdc4076909caeed522ad37380
 - **GREEN commit:** implementation that makes the test pass  
-  Link: <PASTE-LINK-TO-GREEN-COMMIT-(duplicate)>
+  Link: GREEN: https://github.com/samir-salloum/CourseEvaluationSystem/commit/f6924d175b82ba21ea8c9240e289e2cf4ea493d9
+
 
 *Suggested commit messages:*  
 `test(service): failing test for duplicate evaluation rule` →  
 `feat(service): prevent duplicate evaluation per student/course`
-
-> Cycle 1 — Comment max length:
-RED:   https://github.com/samir-salloum/CourseEvaluationSystem/commit/893f60107c948ba5c0c07a7b96691e16ddbc9852
-GREEN: https://github.com/samir-salloum/CourseEvaluationSystem/commit/f1c09c890d84b161fe115e036ecb6f11ad9d3c3f
-
-Cycle 2 — Duplicate per student/course:
-RED:   https://github.com/samir-salloum/CourseEvaluationSystem/commit/20934925245e29fcdc4076909caeed522ad37380
-GREEN: https://github.com/samir-salloum/CourseEvaluationSystem/commit/f6924d175b82ba21ea8c9240e289e2cf4ea493d9
 
 
 ---
