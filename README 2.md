@@ -52,5 +52,5 @@ ASP.NET Core MVC + EF Core. Studenter kan lämna kursutvärderingar (betyg 1–5
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/CourseEvaluationSystem.git
+git[  https://github.com/yourusername/CourseEvaluationSystem.git](https://github.com/samir-salloum/CourseEvaluationSystem)
 cd CourseEvaluationSystem
